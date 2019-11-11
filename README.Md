@@ -1,23 +1,4 @@
----
-title: "Model4_FluSim"
-subtitle: "A Dynamic Model for Evaluation of the Bias of Influenza Vaccine Effectiveness Estimates from Observational Studies"
-author: "Kylie Ainslie"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Model4_FluSim}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-## Introduction
+# Introduction
 
 ## Model Description
 We present a dynamic model consisting of five steps. Below we define the model steps, the associated variables (Table 2), and the probabilities determining each variable’s distribution (Table 3). All variables are defined for each member of the study population, and we allow some variables to change over time (measured in weeks). Figure 1 illustrates the possible sources of confounding and bias present in studies designed to evaluate influenza VE [15,16]. Model assumptions are shown in Web Table 1.
@@ -32,11 +13,11 @@ We present a dynamic model consisting of five steps. Below we define the model s
 
 **Step 5:** Testing for influenza infection. We assume that each person who seeks medical care for ARI is tested for influenza infection. Let Tj denote the binary test result, where T_j=1 or 0 for positive or negative, respectively.
 
-## Simulation Program
+# Simulation Program
 
-### Input File
+## Input File
 
-### Running The Code
+## Running The Code
 To run the simulation program using an input CSV file, first run `model4.trueve()` and then using the output from the true VE program, run `model4.flusim()` using the same input file.
 ```{r eval=FALSE}
   trueve<-model4.trueve("inputfile.csv",vaccov=.495)

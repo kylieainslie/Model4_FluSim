@@ -20,7 +20,7 @@ We present a dynamic model consisting of five steps. Below we define the model s
 ## Running The Code
 To run the simulation program using an input CSV file, first run `model4.trueve()` and then using the output from the true VE program, run `model4.flusim()` using the same input file.
 ```{r eval=FALSE}
-  trueve<-model4.trueve("inputfile.csv",vaccov=.495)
+  trueve <- model4.trueve("inputfile.csv",vaccov=.495)
   model4.flusim("inputfile.csv",ve.tsi=trueve[3,],ve.tmai=trueve[4,])
 ```
 

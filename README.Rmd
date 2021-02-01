@@ -16,7 +16,12 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+# turn off scientific notation
+options(scipen=999)
+
+# load packages
 library(kableExtra)
+library(tidyr)
 ```
 
 ## Introduction
@@ -57,6 +62,9 @@ dt %>%
 ### Input File
 ```{r inputfile, eval=TRUE, echo=FALSE}
 inputs <- read.csv("inputfile.csv") %>%
+  rename(Title = Title..alphanumeric.,
+         Value = CDC1011A_C99) %>%
+  mutate(Value = round(Value, 3))
   
 inputs %>%
   kbl(caption = "Table 2. Input parameters") %>%

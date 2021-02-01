@@ -1,0 +1,72 @@
+Title (alphanumeric),CDC1011A_C99
+Number of simulations,100
+Seed,1234
+All-or-none vaccine (Leaky vaccine if 'no'),0
+Output files (1=yes or 0=no for each),NA
+Incidence-weekly each simulation,0
+Incidence-season each simulation,0
+Incidence-weekly overall,1
+Incidence-season overall,1
+Outcomes file,0
+Add timestamp to output file names,0
+Year of beginning of study,2010
+Month of beginning of study,12
+Number of weeks in the study,5
+Number of strata,1
+Sizes of strata,1000
+"Probability of X=1, U=1 (pi_{11})",0.4
+"Probability of X=1, U=0 (pi_{10})",0.4
+"Probability of X=0, U=1 (pi_{01})",0.1
+"Probability of X=0, U=0 (pi_{00})",0.1
+"Vaccination coverage for X=1, U=1 (alpha_{11})",
+1,0
+2,0
+3,0.2
+4,0.2
+5,0.2
+"Vaccination coverage for X=1, U=0 (alpha_{10})",
+1,0
+2,0
+3,0.2
+4,0.2
+5,0.2
+"Vaccination coverage for X=0, U=1  (alpha_{01})",
+1,0
+2,0
+3,0.2
+4,0.2
+5,0.2
+"Vaccination coverage for X=0, U=0  (alpha_{00})",
+1,0
+2,0
+3,0.2
+4,0.2
+5,0.2
+Initial number of infected persons,30
+Probabilities of FARI to unprotected for X=1 (gamma_01) by week,NA
+1,0.00789054
+2,0.01014828
+3,0.01278987
+4,0.014588684
+5,0.015819892
+FARI probabilities multipliers for X=0 (phi_gamma),1
+FARI probabilities multipliers for vaccinated or protected persons (theta_gamma),0.563
+Probabilities of onset of NFARI for X=1 in unvaccinated or unprotected persons (beta_01) by week,NA
+1,0.027538
+2,0.027601
+3,0.028493
+4,0.034245
+5,0.034375
+NFARI probabilities multipliers for X=0 (phi_beta),1
+NFARI probabilities multipliers for vaccinated or protected persons (theta_beta),1
+Probability of visit for a case of FARI (delta2):,NA
+For unvaccinated or unprotected with U=1,0.4
+Multiplier for vaccinated (theta_delta2),1
+Multiplier for U=0 (mu_delta2),1
+Probability of visit for a case of NFARI (delta1):,NA
+For unvaccinated or unprotected with U=1,0.25
+Multiplier for vaccinated (theta_delta1),1
+Multiplier for U=0 (mu_delta1),1
+Probability of testing positive for influenza:,NA
+Given influenza infection (tau2),1
+Given no influenza infection (tau1),0

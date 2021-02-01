@@ -1,7 +1,7 @@
-# Introduction
+## Introduction
 
 ## Model Description
-We present a dynamic model consisting of five steps. Below we define the model steps, the associated variables (Table 2), and the probabilities determining each variable’s distribution (Table 3). All variables are defined for each member of the study population, and we allow some variables to change over time (measured in weeks). Figure 1 illustrates the possible sources of confounding and bias present in studies designed to evaluate influenza VE [15,16]. Model assumptions are shown in Web Table 1.
+We present a dynamic model consisting of five steps. Below we define the model steps, the associated variables (Table 2), and the probabilities determining each variable’s distribution (Table 3). All variables are defined for each member of the study population, and we allow some variables to change over time (measured in weeks). Figure 1 illustrates the possible sources of confounding and bias present in studies designed to evaluate influenza VE [15,16]. Model assumptions are shown in Table 1.
 
 **Step 1:** Covariates. We assume that people within the population can be classified with a health status (X) of either “healthy” or “frail” and a health awareness (U) of either “high” or “low”.
 
@@ -13,14 +13,41 @@ We present a dynamic model consisting of five steps. Below we define the model s
 
 **Step 5:** Testing for influenza infection. We assume that each person who seeks medical care for ARI is tested for influenza infection. Let Tj denote the binary test result, where T_j=1 or 0 for positive or negative, respectively.
 
-# Simulation Program
+```{r assump_table, eval=TRUE, echo=FALSE}
+dt <- data.frame(Assumption = c(letters[1:10]),
+                 Description = c("Each person is assigned two binary covariates: health status and health awareness, which are constant over time",
+                                 "Everyone is either effectively vaccinated prior to the study or remains unvaccinated throughout the study, and vaccination status is determined without error",
+                                 "Everyone in the study population is susceptible at the beginning of the study",
+                                 "A person can only have one influenza ARI during the study",
+                                 "A person can have at most one non-influenza ARI per week",
+                                 "The probabilities of influenza ARI and non-influenza ARI do not depend on a person’s health awareness given his/her health status",
+                                 "The probability of seeking medical care does not depend on a person’s health status given his/her health awareness",
+                                 "Influenza test specificity and sensitivity do not depend on health status, health awareness, or vaccination status, given a person’s influenza infection status",
+                                 "Every person who seeks medical care is tested for influenza infection",
+                                 "A person with no ARI does not seek medical care"))
 
-## Input File
-
-## Running The Code
-To run the simulation program using an input CSV file, first run `model4.trueve()` and then using the output from the true VE program, run `model4.flusim()` using the same input file.
-```{r eval=FALSE}
-  trueve <- model4.trueve("inputfile.csv",vaccov=.495)
-  model4.flusim("inputfile.csv",ve.tsi=trueve[3,],ve.tmai=trueve[4,])
+dt %>%
+  kbl(caption = "Table 1. Model assumptions") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
 ```
 
+## Simulation Program
+
+### Input File
+```{r inputfile, eval=TRUE, echo=FALSE}
+inputs <- read.csv("inputfile.csv") %>%
+  rename(Title = Title..alphanumeric.,
+         Value = CDC1011A_C99) %>%
+  mutate(Value = round(Value, 3))
+  
+inputs %>%
+  kbl(caption = "Table 2. Input parameters") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+```
+### Running The Code
+To run the simulation program using an input CSV file, first run `model4.trueve()` and then using the output from the true VE program, run `model4.flusim()` using the same input file.
+```{r run_code, eval=FALSE}
+  trueve<-model4.trueve("inputfile.csv",vaccov=.495)
+  model4.flusim("inputfile.csv",ve.tsi=trueve[3,],ve.tmai=trueve[4,])
+```

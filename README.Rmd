@@ -34,7 +34,7 @@ We present a dynamic model consisting of five steps. Below we define the model s
 
 **Step 5:** Testing for influenza infection. We assume that each person who seeks medical care for ARI is tested for influenza infection. Let Tj denote the binary test result, where T_j=1 or 0 for positive or negative, respectively.
 
-```{r eval=TRUE, echo=FALSE}
+```{r assump_table, eval=TRUE, echo=FALSE}
 dt <- data.frame(Assumption = c(letters[1:10]),
                  Description = c("Each person is assigned two binary covariates: health status and health awareness, which are constant over time",
                                  "Everyone is either effectively vaccinated prior to the study or remains unvaccinated throughout the study, and vaccination status is determined without error",
@@ -55,10 +55,17 @@ dt %>%
 ## Simulation Program
 
 ### Input File
+```{r inputfile, eval=TRUE, echo=FALSE}
+inputs <- read.csv("inputfile.csv") %>%
+  
+inputs %>%
+  kbl(caption = "Table 2. Input parameters") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
 
+```
 ### Running The Code
 To run the simulation program using an input CSV file, first run `model4.trueve()` and then using the output from the true VE program, run `model4.flusim()` using the same input file.
-```{r eval=FALSE}
+```{r run_code, eval=FALSE}
   trueve<-model4.trueve("inputfile.csv",vaccov=.495)
   model4.flusim("inputfile.csv",ve.tsi=trueve[3,],ve.tmai=trueve[4,])
 ```
